@@ -135,52 +135,56 @@ class HealthManager {
     }
 
     func fetchWalkingRunningDistancePerWeek(
-            range: TimeRange,
-            completion: @escaping ([Date: Double]) -> Void
-        ) {
-            guard let type = HKObjectType.quantityType(forIdentifier: .distanceWalkingRunning) else {
-                print("❌ Type distanceWalkingRunning non dispo")
-                completion([:]); return
-            }
-
-            let cal = Calendar.current
-            let start = range.startDate
-            let end = range.endDate
-
-            // Anchor au début de la semaine
-            let anchor = cal.date(
-                from: cal.dateComponents([.yearForWeekOfYear, .weekOfYear], from: start)
-            )!
-            let interval = DateComponents(weekOfYear: 1)
-            let predicate = HKQuery.predicateForSamples(withStart: start, end: end, options: [])
-
-            let query = HKStatisticsCollectionQuery(
-                quantityType: type,
-                quantitySamplePredicate: predicate,
-                options: .cumulativeSum,
-                anchorDate: anchor,
-                intervalComponents: interval
-            )
-
-            query.initialResultsHandler = { _, results, error in
-                if let error = error {
-                    print("❌ Erreur dans query distance : \(error)")
-                    completion([:]); return
-                }
-
-                var map: [Date: Double] = [:]
-                results?.enumerateStatistics(from: start, to: end) { stat, _ in
-                    let week = cal.date(
-                        from: cal.dateComponents([.yearForWeekOfYear, .weekOfYear], from: stat.startDate)
-                    )!
-                    let value = stat.sumQuantity()?.doubleValue(for: .meterUnit(with: .kilo)) ?? 0
-                    map[week] = value
-                }
-
-            }
-
-            healthStore.execute(query)
+        range: TimeRange,
+        completion: @escaping ([Date: Double]) -> Void
+    ) {
+        guard let type = HKObjectType.quantityType(forIdentifier: .distanceWalkingRunning) else {
+            completion([:])
+            return
         }
+
+        let cal = Calendar.current
+        let start = range.startDate
+        let end = range.endDate
+
+        // Anchor au début de la semaine
+        let anchor = cal.date(
+            from: cal.dateComponents([.yearForWeekOfYear, .weekOfYear], from: start)
+        )!
+        let interval = DateComponents(weekOfYear: 1)
+        let predicate = HKQuery.predicateForSamples(withStart: start, end: end, options: [])
+
+        let query = HKStatisticsCollectionQuery(
+            quantityType: type,
+            quantitySamplePredicate: predicate,
+            options: .cumulativeSum,
+            anchorDate: anchor,
+            intervalComponents: interval
+        )
+
+        query.initialResultsHandler = { _, results, error in
+            if let _ = error {
+                completion([:])
+                return
+            }
+
+            var map: [Date: Double] = [:]
+            results?.enumerateStatistics(from: start, to: end) { stat, _ in
+                let week = cal.date(
+                    from: cal.dateComponents([.yearForWeekOfYear, .weekOfYear], from: stat.startDate)
+                )!
+                let value = stat.sumQuantity()?.doubleValue(for: .meterUnit(with: .kilo)) ?? 0
+                map[week] = value
+            }
+
+            // Envoi des données sans debug prints
+            DispatchQueue.main.async {
+                completion(map)
+            }
+        }
+
+        healthStore.execute(query)
+    }
     
     /// Calories actives et basales par jour sur une plage donnée
     func fetchCaloriesBreakdownPerDay(

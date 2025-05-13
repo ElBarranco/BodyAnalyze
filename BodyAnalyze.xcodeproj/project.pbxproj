@@ -1,0 +1,909 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2B8CF9442DAD061800B72012 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B8CF8DA2DAD028700B72012 /* WidgetKit.framework */; };
+		2B8CF9452DAD061800B72012 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B8CF8DC2DAD028700B72012 /* SwiftUI.framework */; };
+		2B8CF9542DAD061A00B72012 /* BodyAnalyzeWidgets.swiftExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 2B8CF9432DAD061700B72012 /* BodyAnalyzeWidgets.swiftExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		2B8CF9672DAD381D00B72012 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B8CF8DA2DAD028700B72012 /* WidgetKit.framework */; };
+		2B8CF9682DAD381D00B72012 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B8CF8DC2DAD028700B72012 /* SwiftUI.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2BF6D4302DAA914B001299B6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2BF6D4172DAA9149001299B6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2BF6D41E2DAA9149001299B6;
+			remoteInfo = BodyAnalyze;
+		};
+		2BF6D43A2DAA914B001299B6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2BF6D4172DAA9149001299B6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2BF6D41E2DAA9149001299B6;
+			remoteInfo = BodyAnalyze;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		2B8CF8EE2DAD028900B72012 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				2B8CF9542DAD061A00B72012 /* BodyAnalyzeWidgets.swiftExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		2B8CF8DA2DAD028700B72012 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		2B8CF8DC2DAD028700B72012 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		2B8CF9432DAD061700B72012 /* BodyAnalyzeWidgets.swiftExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BodyAnalyzeWidgets.swiftExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B8CF95D2DAD081200B72012 /* BodyAnalyzeWidgets.swiftExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BodyAnalyzeWidgets.swiftExtension.entitlements; sourceTree = "<group>"; };
+		2B8CF9662DAD381D00B72012 /* BodyAnalyzeWatchWidgets.swiftExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BodyAnalyzeWatchWidgets.swiftExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B8CF97C2DAD382B00B72012 /* BodyAnalyzeWatchWidgets.swiftExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BodyAnalyzeWatchWidgets.swiftExtension.entitlements; sourceTree = "<group>"; };
+		2BF6D41F2DAA9149001299B6 /* BodyAnalyze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BodyAnalyze.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2BF6D42F2DAA914B001299B6 /* BodyAnalyzeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BodyAnalyzeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2BF6D4392DAA914B001299B6 /* BodyAnalyzeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BodyAnalyzeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		2B8CF8C72DAAB8BE00B72012 /* Exceptions for "BodyAnalyze" folder in "BodyAnalyze" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 2BF6D41E2DAA9149001299B6 /* BodyAnalyze */;
+		};
+		2B8CF9582DAD061A00B72012 /* Exceptions for "BodyAnalyzeWidgets.swift" folder in "BodyAnalyzeWidgets.swiftExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 2B8CF9422DAD061700B72012 /* BodyAnalyzeWidgets.swiftExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		2B8CF9462DAD061800B72012 /* BodyAnalyzeWidgets.swift */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				2B8CF9582DAD061A00B72012 /* Exceptions for "BodyAnalyzeWidgets.swift" folder in "BodyAnalyzeWidgets.swiftExtension" target */,
+			);
+			path = BodyAnalyzeWidgets.swift;
+			sourceTree = "<group>";
+		};
+		2B8CF9692DAD381D00B72012 /* BodyAnalyzeWatchWidgets.swift */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = BodyAnalyzeWatchWidgets.swift;
+			sourceTree = "<group>";
+		};
+		2BF6D4212DAA9149001299B6 /* BodyAnalyze */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				2B8CF8C72DAAB8BE00B72012 /* Exceptions for "BodyAnalyze" folder in "BodyAnalyze" target */,
+			);
+			path = BodyAnalyze;
+			sourceTree = "<group>";
+		};
+		2BF6D43C2DAA914B001299B6 /* BodyAnalyzeUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = BodyAnalyzeUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2B8CF9402DAD061700B72012 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2B8CF9452DAD061800B72012 /* SwiftUI.framework in Frameworks */,
+				2B8CF9442DAD061800B72012 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2B8CF9632DAD381D00B72012 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2B8CF9682DAD381D00B72012 /* SwiftUI.framework in Frameworks */,
+				2B8CF9672DAD381D00B72012 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2BF6D41C2DAA9149001299B6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2BF6D42C2DAA914B001299B6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2BF6D4362DAA914B001299B6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2B8CF8D92DAD028700B72012 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2B8CF8DA2DAD028700B72012 /* WidgetKit.framework */,
+				2B8CF8DC2DAD028700B72012 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2BF6D4162DAA9149001299B6 = {
+			isa = PBXGroup;
+			children = (
+				2B8CF97C2DAD382B00B72012 /* BodyAnalyzeWatchWidgets.swiftExtension.entitlements */,
+				2B8CF95D2DAD081200B72012 /* BodyAnalyzeWidgets.swiftExtension.entitlements */,
+				2BF6D4212DAA9149001299B6 /* BodyAnalyze */,
+				2BF6D43C2DAA914B001299B6 /* BodyAnalyzeUITests */,
+				2B8CF9462DAD061800B72012 /* BodyAnalyzeWidgets.swift */,
+				2B8CF9692DAD381D00B72012 /* BodyAnalyzeWatchWidgets.swift */,
+				2B8CF8D92DAD028700B72012 /* Frameworks */,
+				2BF6D4202DAA9149001299B6 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2BF6D4202DAA9149001299B6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2BF6D41F2DAA9149001299B6 /* BodyAnalyze.app */,
+				2BF6D42F2DAA914B001299B6 /* BodyAnalyzeTests.xctest */,
+				2BF6D4392DAA914B001299B6 /* BodyAnalyzeUITests.xctest */,
+				2B8CF9432DAD061700B72012 /* BodyAnalyzeWidgets.swiftExtension.appex */,
+				2B8CF9662DAD381D00B72012 /* BodyAnalyzeWatchWidgets.swiftExtension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2B8CF9422DAD061700B72012 /* BodyAnalyzeWidgets.swiftExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2B8CF9552DAD061A00B72012 /* Build configuration list for PBXNativeTarget "BodyAnalyzeWidgets.swiftExtension" */;
+			buildPhases = (
+				2B8CF93F2DAD061700B72012 /* Sources */,
+				2B8CF9402DAD061700B72012 /* Frameworks */,
+				2B8CF9412DAD061700B72012 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				2B8CF9462DAD061800B72012 /* BodyAnalyzeWidgets.swift */,
+			);
+			name = BodyAnalyzeWidgets.swiftExtension;
+			packageProductDependencies = (
+			);
+			productName = BodyAnalyzeWidgets.swiftExtension;
+			productReference = 2B8CF9432DAD061700B72012 /* BodyAnalyzeWidgets.swiftExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		2B8CF9652DAD381D00B72012 /* BodyAnalyzeWatchWidgets.swiftExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2B8CF9782DAD381F00B72012 /* Build configuration list for PBXNativeTarget "BodyAnalyzeWatchWidgets.swiftExtension" */;
+			buildPhases = (
+				2B8CF9622DAD381D00B72012 /* Sources */,
+				2B8CF9632DAD381D00B72012 /* Frameworks */,
+				2B8CF9642DAD381D00B72012 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BodyAnalyzeWatchWidgets.swiftExtension;
+			packageProductDependencies = (
+			);
+			productName = BodyAnalyzeWatchWidgets.swiftExtension;
+			productReference = 2B8CF9662DAD381D00B72012 /* BodyAnalyzeWatchWidgets.swiftExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		2BF6D41E2DAA9149001299B6 /* BodyAnalyze */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2BF6D4432DAA914B001299B6 /* Build configuration list for PBXNativeTarget "BodyAnalyze" */;
+			buildPhases = (
+				2BF6D41B2DAA9149001299B6 /* Sources */,
+				2BF6D41C2DAA9149001299B6 /* Frameworks */,
+				2BF6D41D2DAA9149001299B6 /* Resources */,
+				2B8CF8EE2DAD028900B72012 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				2BF6D4212DAA9149001299B6 /* BodyAnalyze */,
+			);
+			name = BodyAnalyze;
+			packageProductDependencies = (
+			);
+			productName = BodyAnalyze;
+			productReference = 2BF6D41F2DAA9149001299B6 /* BodyAnalyze.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2BF6D42E2DAA914B001299B6 /* BodyAnalyzeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2BF6D4462DAA914B001299B6 /* Build configuration list for PBXNativeTarget "BodyAnalyzeTests" */;
+			buildPhases = (
+				2BF6D42B2DAA914B001299B6 /* Sources */,
+				2BF6D42C2DAA914B001299B6 /* Frameworks */,
+				2BF6D42D2DAA914B001299B6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2BF6D4312DAA914B001299B6 /* PBXTargetDependency */,
+			);
+			name = BodyAnalyzeTests;
+			packageProductDependencies = (
+			);
+			productName = BodyAnalyzeTests;
+			productReference = 2BF6D42F2DAA914B001299B6 /* BodyAnalyzeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		2BF6D4382DAA914B001299B6 /* BodyAnalyzeUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2BF6D4492DAA914B001299B6 /* Build configuration list for PBXNativeTarget "BodyAnalyzeUITests" */;
+			buildPhases = (
+				2BF6D4352DAA914B001299B6 /* Sources */,
+				2BF6D4362DAA914B001299B6 /* Frameworks */,
+				2BF6D4372DAA914B001299B6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2BF6D43B2DAA914B001299B6 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				2BF6D43C2DAA914B001299B6 /* BodyAnalyzeUITests */,
+			);
+			name = BodyAnalyzeUITests;
+			packageProductDependencies = (
+			);
+			productName = BodyAnalyzeUITests;
+			productReference = 2BF6D4392DAA914B001299B6 /* BodyAnalyzeUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2BF6D4172DAA9149001299B6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1620;
+				LastUpgradeCheck = 1620;
+				TargetAttributes = {
+					2B8CF9422DAD061700B72012 = {
+						CreatedOnToolsVersion = 16.2;
+					};
+					2B8CF9652DAD381D00B72012 = {
+						CreatedOnToolsVersion = 16.2;
+					};
+					2BF6D41E2DAA9149001299B6 = {
+						CreatedOnToolsVersion = 16.2;
+					};
+					2BF6D42E2DAA914B001299B6 = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = 2BF6D41E2DAA9149001299B6;
+					};
+					2BF6D4382DAA914B001299B6 = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = 2BF6D41E2DAA9149001299B6;
+					};
+				};
+			};
+			buildConfigurationList = 2BF6D41A2DAA9149001299B6 /* Build configuration list for PBXProject "BodyAnalyze" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2BF6D4162DAA9149001299B6;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 2BF6D4202DAA9149001299B6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2BF6D41E2DAA9149001299B6 /* BodyAnalyze */,
+				2BF6D42E2DAA914B001299B6 /* BodyAnalyzeTests */,
+				2BF6D4382DAA914B001299B6 /* BodyAnalyzeUITests */,
+				2B8CF9422DAD061700B72012 /* BodyAnalyzeWidgets.swiftExtension */,
+				2B8CF9652DAD381D00B72012 /* BodyAnalyzeWatchWidgets.swiftExtension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2B8CF9412DAD061700B72012 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2B8CF9642DAD381D00B72012 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2BF6D41D2DAA9149001299B6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2BF6D42D2DAA914B001299B6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2BF6D4372DAA914B001299B6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2B8CF93F2DAD061700B72012 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2B8CF9622DAD381D00B72012 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2BF6D41B2DAA9149001299B6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2BF6D42B2DAA914B001299B6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2BF6D4352DAA914B001299B6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2BF6D4312DAA914B001299B6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2BF6D41E2DAA9149001299B6 /* BodyAnalyze */;
+			targetProxy = 2BF6D4302DAA914B001299B6 /* PBXContainerItemProxy */;
+		};
+		2BF6D43B2DAA914B001299B6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2BF6D41E2DAA9149001299B6 /* BodyAnalyze */;
+			targetProxy = 2BF6D43A2DAA914B001299B6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		2B8CF9562DAD061A00B72012 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = BodyAnalyzeWidgets.swiftExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7Q9VR656F3;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BodyAnalyzeWidgets.swift/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BodyAnalyzeWidgets.swift;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Octopy.BodyAnalyze.BodyAnalyzeWidgets;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		2B8CF9572DAD061A00B72012 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = BodyAnalyzeWidgets.swiftExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7Q9VR656F3;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BodyAnalyzeWidgets.swift/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BodyAnalyzeWidgets.swift;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Octopy.BodyAnalyze.BodyAnalyzeWidgets;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		2B8CF9792DAD381F00B72012 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = BodyAnalyzeWatchWidgets.swiftExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7Q9VR656F3;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BodyAnalyzeWatchWidgets.swift/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BodyAnalyzeWatchWidgets.swift;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Octopy.BodyAnalyze.BodyBatteryWatchWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "watchos watchsimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 9.6;
+			};
+			name = Debug;
+		};
+		2B8CF97A2DAD381F00B72012 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = BodyAnalyzeWatchWidgets.swiftExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7Q9VR656F3;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BodyAnalyzeWatchWidgets.swift/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BodyAnalyzeWatchWidgets.swift;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Octopy.BodyAnalyze.BodyBatteryWatchWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "watchos watchsimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 9.6;
+			};
+			name = Release;
+		};
+		2BF6D4412DAA914B001299B6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = BodyAnalyze/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		2BF6D4422DAA914B001299B6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = BodyAnalyze/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2BF6D4442DAA914B001299B6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = BodyAnalyze/BodyAnalyze.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"BodyAnalyze/Preview Content\"";
+				DEVELOPMENT_TEAM = 7Q9VR656F3;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = BodyAnalyze;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Cette application utilise vos données HealthKit pour analyser vos workouts et calculer votre Recovery Score";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Cette application utilise HealthKit pour analyser vos données sportives et améliorer votre expérience.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Octopy.BodyAnalyze;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		2BF6D4452DAA914B001299B6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = BodyAnalyze/BodyAnalyze.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"BodyAnalyze/Preview Content\"";
+				DEVELOPMENT_TEAM = 7Q9VR656F3;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = BodyAnalyze;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Cette application utilise vos données HealthKit pour analyser vos workouts et calculer votre Recovery Score";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Cette application utilise HealthKit pour analyser vos données sportives et améliorer votre expérience.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Octopy.BodyAnalyze;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		2BF6D4472DAA914B001299B6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 923N2P89FL;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Octopy.BodyAnalyzeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BodyAnalyze.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BodyAnalyze";
+			};
+			name = Debug;
+		};
+		2BF6D4482DAA914B001299B6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 923N2P89FL;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Octopy.BodyAnalyzeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BodyAnalyze.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BodyAnalyze";
+			};
+			name = Release;
+		};
+		2BF6D44A2DAA914B001299B6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 923N2P89FL;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Octopy.BodyAnalyzeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = BodyAnalyze;
+			};
+			name = Debug;
+		};
+		2BF6D44B2DAA914B001299B6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 923N2P89FL;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Octopy.BodyAnalyzeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = BodyAnalyze;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2B8CF9552DAD061A00B72012 /* Build configuration list for PBXNativeTarget "BodyAnalyzeWidgets.swiftExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2B8CF9562DAD061A00B72012 /* Debug */,
+				2B8CF9572DAD061A00B72012 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2B8CF9782DAD381F00B72012 /* Build configuration list for PBXNativeTarget "BodyAnalyzeWatchWidgets.swiftExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2B8CF9792DAD381F00B72012 /* Debug */,
+				2B8CF97A2DAD381F00B72012 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2BF6D41A2DAA9149001299B6 /* Build configuration list for PBXProject "BodyAnalyze" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2BF6D4412DAA914B001299B6 /* Debug */,
+				2BF6D4422DAA914B001299B6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2BF6D4432DAA914B001299B6 /* Build configuration list for PBXNativeTarget "BodyAnalyze" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2BF6D4442DAA914B001299B6 /* Debug */,
+				2BF6D4452DAA914B001299B6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2BF6D4462DAA914B001299B6 /* Build configuration list for PBXNativeTarget "BodyAnalyzeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2BF6D4472DAA914B001299B6 /* Debug */,
+				2BF6D4482DAA914B001299B6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2BF6D4492DAA914B001299B6 /* Build configuration list for PBXNativeTarget "BodyAnalyzeUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2BF6D44A2DAA914B001299B6 /* Debug */,
+				2BF6D44B2DAA914B001299B6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2BF6D4172DAA9149001299B6 /* Project object */;
+}

@@ -147,8 +147,6 @@ class HealthManager {
             let start = range.startDate
             let end = range.endDate
 
-            print("📆 Requête distance du \(start) au \(end)")
-
             // Anchor au début de la semaine
             let anchor = cal.date(
                 from: cal.dateComponents([.yearForWeekOfYear, .weekOfYear], from: start)
@@ -177,13 +175,8 @@ class HealthManager {
                     )!
                     let value = stat.sumQuantity()?.doubleValue(for: .meterUnit(with: .kilo)) ?? 0
                     map[week] = value
-                    print("📍 Ajout weeklyWalkingDistance[\(week)] = \(value) km")
                 }
 
-                DispatchQueue.main.async {
-                    print("✅ weeklyWalkingDistance contient : \(map.keys.map { "\($0)" }.joined(separator: " | "))")
-                    completion(map)
-                }
             }
 
             healthStore.execute(query)

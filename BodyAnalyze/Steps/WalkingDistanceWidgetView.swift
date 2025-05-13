@@ -31,19 +31,6 @@ struct WalkingDistanceWidgetView: View {
                     .bold()
             }
 
-            Text("Marche, course et rando")
-                .font(.caption)
-                .foregroundColor(.secondary)
-
-            // Affiche les clés disponibles pour debug
-            if !healthVM.stepVM.weeklyWalkingDistance.isEmpty {
-                Text("🧪 Clés :")
-                    .font(.caption2)
-                ForEach(healthVM.stepVM.weeklyWalkingDistance.keys.sorted(), id: \.self) { key in
-                    Text("• \(key.formatted())")
-                        .font(.caption2)
-                }
-            }
         }
         .padding()
         .onAppear {

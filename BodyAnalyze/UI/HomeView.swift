@@ -1,10 +1,3 @@
-//
-//  HomeView.swift
-//  BodyAnalyze
-//
-//  Created by Lionel Barranco on 05/05/2025.
-//
-
 import SwiftUI
 
 struct HomeView: View {
@@ -12,12 +5,16 @@ struct HomeView: View {
 
     var body: some View {
         NavigationWrapperView(title: "Accueil 🏠") {
-            VStack {
-                // 🏠 Dashboard principal à venir
+            VStack(spacing: 16) {
+                // 🏠 Dashboard principal
+                WeeklyExerciseView()
+                    .environmentObject(healthVM)
+
                 Text("🏠 Tableau de bord à venir...")
                     .padding(.top, 100)
                 Spacer()
             }
+            .padding()
         }
     }
 }

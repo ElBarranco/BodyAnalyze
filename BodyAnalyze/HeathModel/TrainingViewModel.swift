@@ -13,7 +13,11 @@ class TrainingViewModel: ObservableObject {
     @Published var restingHR: Double = 60.0
     @Published var isMale: Bool = true
     @Published var currentWeekStart: Date = Calendar.current.startOfWeek(for: Date())
+    
 
+    @Published var weeklyWorkoutMinutes: Int = 0
+    
+    private let healthStore = HKHealthStore()
     private let healthManager = HealthManager()
     private var authorized = false
 
@@ -204,5 +208,39 @@ class TrainingViewModel: ObservableObject {
         }
 
         return totalWeight > 0 ? sum / totalWeight : 0
+    }
+    
+    /// Charge le total de minutes de workouts des 7 derniers jours
+    func loadWeeklyWorkoutMinutes() {
+        guard HKHealthStore.isHealthDataAvailable() else { return }
+        let workoutType = HKObjectType.workoutType()
+        let now = Date()
+        guard let weekAgo = Calendar.current.date(byAdding: .day, value: -7, to: now) else { return }
+
+        let predicate = HKQuery.predicateForSamples(withStart: weekAgo, end: now, options: .strictStartDate)
+        let query = HKSampleQuery(sampleType: workoutType,
+                                  predicate: predicate,
+                                  limit: HKObjectQueryNoLimit,
+                                  sortDescriptors: nil) { [weak self] _, samples, error in
+            guard let self = self,
+                  error == nil,
+                  let workouts = samples as? [HKWorkout] else { return }
+
+            let totalMinutes = workouts.reduce(0) { sum, w in sum + Int(w.duration / 60) }
+            DispatchQueue.main.async { self.weeklyWorkoutMinutes = totalMinutes }
+        }
+        healthStore.execute(query)
+    }
+    
+    /// Formatte en "H h MM" ou "MM min"
+    var weeklyWorkoutDisplay: String {
+        let minutes = weeklyWorkoutMinutes
+        if minutes >= 60 {
+            let h = minutes / 60
+            let m = minutes % 60
+            return String(format: "%dh%02d", h, m)
+        } else {
+            return "\(minutes) min"
+        }
     }
 }

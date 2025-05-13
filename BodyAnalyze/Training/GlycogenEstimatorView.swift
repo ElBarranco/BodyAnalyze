@@ -1,8 +1,8 @@
 import SwiftUI
-import Charts
 
 struct GlycogenEstimatorView: View {
     @StateObject private var viewModel = GlycogenEstimationViewModel()
+    @State private var selectedIndex: Int? = nil
 
     var body: some View {
         Form {
@@ -12,13 +12,32 @@ struct GlycogenEstimatorView: View {
                         Text(type.rawValue).tag(type)
                     }
                 }
+
                 Picker("Intensité", selection: $viewModel.intensity) {
-                    ForEach(["Z1", "Z2", "Z3", "Z4", "Z5"], id: \.self) { Text($0) }
+                    ForEach(["Z1", "Z2", "Z3", "Z4", "Z5"], id: \.self) {
+                        Text($0)
+                    }
                 }
 
-                Stepper("Durée : \(viewModel.duration, specifier: "%.1f") h", value: $viewModel.duration, in: 0.5...12, step: 0.5)
-                Stepper("Altitude : \(Int(viewModel.altitude)) m", value: $viewModel.altitude, in: 0...6000, step: 100)
-                Stepper("Température : \(Int(viewModel.temperature)) °C", value: $viewModel.temperature, in: -20...40, step: 1)
+                VStack(alignment: .leading) {
+                    Text("Durée : \(viewModel.duration, specifier: "%.1f") h")
+                    Slider(value: $viewModel.duration, in: 0.5...12, step: 0.5)
+                }
+
+                VStack(alignment: .leading) {
+                    Text("Altitude : \(Int(viewModel.altitude)) m")
+                    Slider(value: $viewModel.altitude, in: 0...6000, step: 100)
+                }
+
+                VStack(alignment: .leading) {
+                    Text("Température : \(Int(viewModel.temperature)) °C")
+                    Slider(value: $viewModel.temperature, in: -20...40, step: 1)
+                }
+
+                VStack(alignment: .leading) {
+                    Text("Dénivelé positif : \(Int(viewModel.elevationGain)) m")
+                    Slider(value: $viewModel.elevationGain, in: 0...3000, step: 100)
+                }
 
                 Picker("Recharge glucidique", selection: $viewModel.glycogenLoad) {
                     ForEach(GlycogenLoadLevel.allCases) { level in
@@ -28,36 +47,56 @@ struct GlycogenEstimatorView: View {
 
                 Toggle("Mange pendant ?", isOn: $viewModel.eatingDuring)
                 if viewModel.eatingDuring {
-                    Stepper("Glucides/h : \(Int(viewModel.carbsPerHour)) g", value: $viewModel.carbsPerHour, in: 10...90, step: 5)
+                    VStack(alignment: .leading) {
+                        Text("Glucides/h : \(Int(viewModel.carbsPerHour)) g")
+                        Slider(value: $viewModel.carbsPerHour, in: 10...90, step: 5)
+                    }
                 }
             }
 
             Button("Estimer") {
                 viewModel.estimate()
+                selectedIndex = nil
             }
 
             if let result = viewModel.result {
-                Section(header: Text("Résultat")) {
-                    Text("Réserve max : \(Int(result.reserveMax)) g")
-                    Text("Utilisé : \(Int(result.glycogenUsed)) g")
-                    Text("Restant : \(Int(result.remaining)) g")
-                    Text("Reste : \(result.percentageRemaining, specifier: "%.1f") %")
-                }
-
                 Section(header: Text("Courbe de glycogène")) {
-                    Chart {
-                        ForEach(Array(result.timeSeries.enumerated()), id: \.offset) { index, value in
-                            LineMark(
-                                x: .value("h", Double(index) / 100.0 * viewModel.duration),
-                                y: .value("g", value)
-                            )
-                        }
-                        RuleMark(y: .value("Seuil de fatigue", result.reserveMax * 0.5))
-                            .foregroundStyle(.orange)
-                        RuleMark(y: .value("Zone critique", result.reserveMax * 0.3))
-                            .foregroundStyle(.red)
+                    GlycogenChartView(
+                        result: result,
+                        duration: viewModel.duration,
+                        selectedIndex: $selectedIndex
+                    )
+
+                    if let i = selectedIndex {
+                        let percent = result.timeSeries[i] / result.reserveMax * 100
+                        let time = Double(i) / 100 * viewModel.duration
+                        Text("📍 Glycogène à \(time.asHourMinuteString()) : \(Int(percent)) %")
+                            .font(.caption)
+                            .padding(.top, 4)
                     }
-                    .frame(height: 200)
+
+                    let (half, critical) = viewModel.thresholdCrossingTimes()
+                    if half != nil || critical != nil {
+                        VStack(alignment: .leading, spacing: 6) {
+                            Text("🔍 Analyse :")
+                                .font(.headline)
+                            if let h = half {
+                                Text("⏳ Vous passez sous les **50%** à **\(h.asHourMinuteString())**")
+                            }
+                            if let c = critical {
+                                Text("⚠️ Vous passez sous les **30%** à **\(c.asHourMinuteString())**")
+                                    .foregroundColor(.red)
+                            }
+                        }
+                        .padding(.top, 8)
+                    }
+
+                    Section(header: Text("Résultat")) {
+                        Text("Réserve max : \(Int(result.reserveMax)) g")
+                        Text("Utilisé : \(Int(result.glycogenUsed)) g")
+                        Text("Restant : \(Int(result.remaining)) g")
+                        Text("Reste : \(result.percentageRemaining, specifier: "%.1f") %")
+                    }
                 }
             }
         }

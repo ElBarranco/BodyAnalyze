@@ -1,0 +1,65 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Xcode
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata/
+*.xccheckout
+DerivedData/
+*.moved-aside
+*.xcuserstate
+*.xcscmblueprint
+
+# SwiftPM
+.build/
+.swiftpm/xcode/package.xcworkspace/
+
+# CocoaPods
+Pods/
+
+# Carthage
+Carthage/Build/
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output
+
+# Archives
+*.xcarchive
+
+# SwiftUI Preview
+*.icloud
+
+# Firebase / GoogleService
+GoogleService-Info.plist
+
+# Tests / Coverage
+*.gcno
+*.gcda
+*.profdata
+
+# App files
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Watch build artifacts
+*.watchkitapp
+*.watchkitextension
+
+# Simulator logs
+coreSimulatorLogs/
+
+# Other
+*.log

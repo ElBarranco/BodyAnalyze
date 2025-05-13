@@ -12,6 +12,7 @@
 		2B8CF9542DAD061A00B72012 /* BodyAnalyzeWidgets.swiftExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 2B8CF9432DAD061700B72012 /* BodyAnalyzeWidgets.swiftExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		2B8CF9672DAD381D00B72012 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B8CF8DA2DAD028700B72012 /* WidgetKit.framework */; };
 		2B8CF9682DAD381D00B72012 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B8CF8DC2DAD028700B72012 /* SwiftUI.framework */; };
+		2BC2A87E2DD3817A00ADD026 /* Untitled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC2A87D2DD3817900ADD026 /* Untitled.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		2B8CF95D2DAD081200B72012 /* BodyAnalyzeWidgets.swiftExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BodyAnalyzeWidgets.swiftExtension.entitlements; sourceTree = "<group>"; };
 		2B8CF9662DAD381D00B72012 /* BodyAnalyzeWatchWidgets.swiftExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BodyAnalyzeWatchWidgets.swiftExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B8CF97C2DAD382B00B72012 /* BodyAnalyzeWatchWidgets.swiftExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BodyAnalyzeWatchWidgets.swiftExtension.entitlements; sourceTree = "<group>"; };
+		2BC2A87D2DD3817900ADD026 /* Untitled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Untitled.swift; sourceTree = "<group>"; };
 		2BF6D41F2DAA9149001299B6 /* BodyAnalyze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BodyAnalyze.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BF6D42F2DAA914B001299B6 /* BodyAnalyzeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BodyAnalyzeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BF6D4392DAA914B001299B6 /* BodyAnalyzeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BodyAnalyzeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -158,6 +160,7 @@
 		2BF6D4162DAA9149001299B6 = {
 			isa = PBXGroup;
 			children = (
+				2BC2A87D2DD3817900ADD026 /* Untitled.swift */,
 				2B8CF97C2DAD382B00B72012 /* BodyAnalyzeWatchWidgets.swiftExtension.entitlements */,
 				2B8CF95D2DAD081200B72012 /* BodyAnalyzeWidgets.swiftExtension.entitlements */,
 				2BF6D4212DAA9149001299B6 /* BodyAnalyze */,
@@ -400,6 +403,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BC2A87E2DD3817A00ADD026 /* Untitled.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

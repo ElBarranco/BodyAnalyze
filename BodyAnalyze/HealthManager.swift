@@ -186,6 +186,8 @@ class HealthManager {
         healthStore.execute(query)
     }
     
+   
+    
     /// Calories actives et basales par jour sur une plage donnée
     func fetchCaloriesBreakdownPerDay(
         for range: TimeRange,

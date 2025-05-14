@@ -88,6 +88,11 @@
 			path = BodyAnalyzeWatchWidgets.swift;
 			sourceTree = "<group>";
 		};
+		2BC2A8942DD51A9700ADD026 /* Activity */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Activity;
+			sourceTree = "<group>";
+		};
 		2BF6D4212DAA9149001299B6 /* BodyAnalyze */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
@@ -166,6 +171,7 @@
 				2B8CF9692DAD381D00B72012 /* BodyAnalyzeWatchWidgets.swift */,
 				2B8CF8D92DAD028700B72012 /* Frameworks */,
 				2BF6D4202DAA9149001299B6 /* Products */,
+				2BC2A8942DD51A9700ADD026 /* Activity */,
 			);
 			sourceTree = "<group>";
 		};
@@ -239,6 +245,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
+				2BC2A8942DD51A9700ADD026 /* Activity */,
 				2BF6D4212DAA9149001299B6 /* BodyAnalyze */,
 			);
 			name = BodyAnalyze;

@@ -5,15 +5,20 @@
 import Foundation
 import HealthKit
 
-/// ViewModel dédié à l'analyse du nombre de pas (quotidien et running)
+/// ViewModel dédié à l'analyse du nombre de pas, course, distance et lumière naturelle 🌞
 class StepCountViewModel: ObservableObject {
     // MARK: - Published properties
     @Published var stepsPerDay: [Date: Int] = [:]
-    @Published var stepStreak: Int = 0
     @Published var runningStepsPerDay: [Date: Int] = [:]
+    @Published var weeklyWalkingDistance: [Date: Double] = [:] // km
+
+    @Published var stepStreak: Int = 0
     @Published var averageSteps: Double = 0.0
     @Published var averageRunningSteps: Double = 0.0
-    @Published var weeklyWalkingDistance: [Date: Double] = [:] // 🚶‍♂️ Distance par semaine (en km)
+
+    // 🌞 Exposition lumière naturelle (en minutes)
+    @Published var lightExposurePerDay: [Date: Double] = [:]
+    @Published var averageLightExposure: Double = 0.0
 
     @Published var dailyStepGoal: Int? {
         didSet {
@@ -30,10 +35,25 @@ class StepCountViewModel: ObservableObject {
         (dailyStepGoal ?? 0) > 0
     }
 
-    // MARK: - Accès rapide aux pas du jour
+    // MARK: - Accès rapide
     var todaySteps: Int {
         let today = Calendar.current.startOfDay(for: Date())
         return stepsPerDay[today] ?? 0
+    }
+
+    var todayLightExposure: Double {
+        let today = Calendar.current.startOfDay(for: Date())
+        return lightExposurePerDay[today] ?? 0.0
+    }
+
+    /// Statut simplifié de la lumière du jour
+    var lightExposureStatus: String {
+        switch todayLightExposure {
+            case ..<10: return "🔴 Très peu de lumière naturelle aujourd’hui"
+            case 10..<30: return "🟠 Exposition modérée"
+            case 30...: return "🟢 Bonne exposition !"
+            default: return "⏳ Données en attente"
+        }
     }
 
     private let healthManager = HealthManager()
@@ -72,7 +92,6 @@ class StepCountViewModel: ObservableObject {
         }
     }
 
-    /// 🚶‍♂️ Charge la distance hebdomadaire (walking + running)
     func loadWalkingDistancePerWeek(range: TimeRange) {
         healthManager.requestAuthorization { [weak self] success, _ in
             guard let self = self, success else { return }
@@ -83,7 +102,16 @@ class StepCountViewModel: ObservableObject {
             }
         }
     }
-    
+
+    private func computeAverageLightExposure() {
+        guard !lightExposurePerDay.isEmpty else {
+            averageLightExposure = 0
+            return
+        }
+        let total = lightExposurePerDay.values.reduce(0, +)
+        averageLightExposure = total / Double(lightExposurePerDay.count)
+    }
+
     func debugDistanceLog() {
         healthManager.requestAuthorization { [weak self] success, _ in
             guard let self = self, success else {

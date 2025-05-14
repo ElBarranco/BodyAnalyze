@@ -1,3 +1,11 @@
+//
+//  EpocWeekChartView.swift
+//  BodyAnalyze
+//
+//  Created by Lionel Barranco on 07/05/2025.
+//
+
+
 import SwiftUI
 import Charts
 
@@ -21,29 +29,21 @@ struct EpocWeekChartView: View {
 
     var body: some View {
         let epocData = healthVM.trainingVM.epocPerDay
-        let disciplineData = healthVM.trainingVM.disciplineByDay
 
         VStack(alignment: .leading) {
             Chart {
                 ForEach(days, id: \.self) { date in
                     let epoc = epocData[calendar.startOfDay(for: date)] ?? 0
-                    let discipline = disciplineData[calendar.startOfDay(for: date)] ?? .unknown
-
                     BarMark(
                         x: .value("Jour", shortDayString(from: date)),
                         y: .value("EPOC", epoc)
                     )
                     .foregroundStyle(colorForEpoc(epoc))
-                    .annotation(position: .top) {
-                        VStack(spacing: 2) {
-                            if epoc > 0 {
-                                Text("\(Int(epoc))")
-                                    .font(.caption2)
-                                    .foregroundColor(.gray)
-                            }
-                            Image(systemName: discipline.icon)
-                                .font(.caption)
-                                .foregroundColor(.blue)
+                    .annotation {
+                        if epoc > 0 {
+                            Text("\(Int(epoc))")
+                                .font(.caption2)
+                                .foregroundColor(.gray)
                         }
                     }
                 }

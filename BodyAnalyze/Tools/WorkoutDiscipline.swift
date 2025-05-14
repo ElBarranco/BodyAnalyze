@@ -1,38 +1,29 @@
-//
-//  WorkoutDiscipline.swift
-//  BodyAnalyze
-//
-//  Created by Lionel Barranco on 07/05/2025.
-//
-
-
-enum WorkoutDiscipline: String {
+enum WorkoutDiscipline: String, CaseIterable, Identifiable {
     case running
+    case walking
     case hiking
-    case strength
     case cycling
     case swimming
-    case unknown
+    case strength
+    case hiit
+    case yoga
+    case mobility
+    case other
 
-    var icon: String {
-        switch self {
-        case .running: return "figure.run"
-        case .hiking: return "figure.hiking"
-        case .strength: return "dumbbell"
-        case .cycling: return "bicycle"
-        case .swimming: return "figure.pool.swim"
-        case .unknown: return "questionmark"
-        }
-    }
+    var id: String { self.rawValue }
 
-    var label: String {
+    var emoji: String {
         switch self {
-        case .running: return "Course"
-        case .hiking: return "Rando"
-        case .strength: return "Muscu"
-        case .cycling: return "Vélo"
-        case .swimming: return "Natation"
-        case .unknown: return "Inconnu"
+        case .running: return "🏃‍♂️"
+        case .walking: return "🚶‍♂️"
+        case .hiking: return "🥾"
+        case .cycling: return "🚴‍♀️"
+        case .swimming: return "🏊‍♂️"
+        case .strength: return "🏋️‍♂️"
+        case .hiit: return "🥊"
+        case .yoga: return "🧘‍♀️"
+        case .mobility: return "🧎‍♂️"
+        case .other: return "❓"
         }
     }
 }

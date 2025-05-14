@@ -6,7 +6,8 @@ class TrainingViewModel: ObservableObject {
     @Published var epocPerDay: [Date: Double] = [:]
     @Published var trimpPerDay: [Date: Double] = [:]
     @Published var trainingTypesByDay: [Date: TrainingType] = [:]
-    @Published var disciplineByDay: [Date: WorkoutDiscipline] = [:] // ✅ Nouveau
+    @Published var disciplineByDay: [Date: WorkoutDiscipline] = [:]
+    @Published var disciplineDistribution: [WorkoutDiscipline: Int] = [:] 
 
     @Published var trainingLoad7d: Double = 0.0
     @Published var maxHeartRate: Double = 190.0
@@ -54,6 +55,7 @@ class TrainingViewModel: ObservableObject {
 
             self.analyzeTrainingDays(from: workouts)
             self.detectDisciplines(from: workouts) // ✅ Détection des disciplines
+            self.calculateDisciplineDistribution(for: workouts) // ✅ Ajout pour camembert
 
             self.healthManager.analyzeEPOCPerDayV2(
                 for: workouts,
@@ -94,7 +96,7 @@ class TrainingViewModel: ObservableObject {
                 discipline = .strength
             case .cycling:     discipline = .cycling
             case .swimming:    discipline = .swimming
-            default:           discipline = .unknown
+            default:           discipline = .other
             }
 
             map[day] = discipline
@@ -208,6 +210,35 @@ class TrainingViewModel: ObservableObject {
         }
 
         return totalWeight > 0 ? sum / totalWeight : 0
+    }
+    
+    func calculateDisciplineDistribution(for workouts: [HKWorkout]) {
+        var distribution: [WorkoutDiscipline: Int] = [:]
+        let cal = Calendar.current
+        let today = cal.startOfDay(for: Date())
+        guard let monthAgo = cal.date(byAdding: .month, value: -1, to: today) else { return }
+
+        for workout in workouts where workout.startDate >= monthAgo {
+            let discipline: WorkoutDiscipline
+            switch workout.workoutActivityType {
+            case .running: discipline = .running
+            case .walking: discipline = .walking
+            case .hiking: discipline = .hiking
+            case .cycling: discipline = .cycling
+            case .swimming: discipline = .swimming
+            case .yoga: discipline = .yoga
+            case .traditionalStrengthTraining, .functionalStrengthTraining: discipline = .strength
+            case .highIntensityIntervalTraining: discipline = .hiit
+            case .mindAndBody: discipline = .mobility
+            default: discipline = .other
+            }
+
+            distribution[discipline, default: 0] += 1
+        }
+
+        DispatchQueue.main.async {
+            self.disciplineDistribution = distribution
+        }
     }
     
     /// Charge le total de minutes de workouts des 7 derniers jours

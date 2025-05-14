@@ -8,12 +8,13 @@ class GlycogenEstimationViewModel: ObservableObject {
     @Published var intensity: String = "Z2"
     @Published var altitude: Double = 0
     @Published var temperature: Double = 20
+    @Published var elevationGain: Double = 0
+    @Published var distance: Double = 0 // ✅ NOUVEAU
     @Published var glycogenLoad: GlycogenLoadLevel = .normal
     @Published var eatingDuring: Bool = false
     @Published var carbsPerHour: Double = 30
-    @Published var result: GlycogenEstimationResult?
     @Published var activityType: ActivityType = .hike
-    @Published var elevationGain: Double = 0 // 🔼 Ajout dénivelé
+    @Published var result: GlycogenEstimationResult?
 
     private let healthManager = HealthManager()
 
@@ -29,7 +30,8 @@ class GlycogenEstimationViewModel: ObservableObject {
             activityType: activityType,
             eatingDuring: eatingDuring,
             carbsPerHour: carbsPerHour,
-            elevationGain: elevationGain // ✅ Ajout ici aussi
+            elevationGain: elevationGain,
+            distance: distance > 0 ? distance : nil
         )
         self.result = estimation
     }
@@ -45,35 +47,26 @@ class GlycogenEstimationViewModel: ObservableObject {
             }
         }
     }
-    
-    func thresholdCrossingTimes() -> (halfTime: Double?, criticalTime: Double?) {
-        guard let result = result else { return (nil, nil) }
 
-        let durationPerStep = duration / 100
-        var halfTime: Double?
-        var criticalTime: Double?
+    func thresholdCrossingTimes() -> (Double?, Double?) {
+        guard let result else { return (nil, nil) }
+        let values = result.timeSeries
+        let step = duration / Double(values.count)
 
-        for (i, value) in result.timeSeries.enumerated() {
-            let percent = value / result.reserveMax
-            if halfTime == nil && percent < 0.5 {
-                halfTime = Double(i) * durationPerStep
+        var time50: Double?
+        var time30: Double?
+
+        for (i, v) in values.enumerated() {
+            let pct = v / result.reserveMax
+            let t = Double(i) * step
+            if time50 == nil && pct < 0.5 {
+                time50 = t
             }
-            if criticalTime == nil && percent < 0.3 {
-                criticalTime = Double(i) * durationPerStep
+            if time30 == nil && pct < 0.3 {
+                time30 = t
                 break
             }
         }
-
-        return (halfTime, criticalTime)
-    }
-    
-    
-}
-
-extension Double {
-    func asHourMinuteString() -> String {
-        let hours = Int(self)
-        let minutes = Int((self - Double(hours)) * 60)
-        return String(format: "%dh%02d", hours, minutes)
+        return (time50, time30)
     }
 }

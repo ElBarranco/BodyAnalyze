@@ -12,51 +12,68 @@ enum GlycogenEstimator {
         activityType: ActivityType,
         eatingDuring: Bool,
         carbsPerHour: Double,
-        elevationGain: Double
+        elevationGain: Double,
+        distance: Double? = nil
     ) -> GlycogenEstimationResult {
-        
-        // 💾 Réserve glycogène max
-        let reserveMax = weight * 15.0 * glycogenLoad.percentageOfMax
-        let coeff = activityType.baseCoeff
 
-        // 🏔️ Coeff altitude
+        // 🧠 Sexe : modifie la réserve totale (moins de muscle = moins de glycogène)
+        let sexModifier = (sex.lowercased() == "femme") ? 0.85 : 1.0
+        let reserveMax = weight * 15.0 * glycogenLoad.percentageOfMax * sexModifier
+
+        // ⚡️ Dépense énergétique par heure
+        let kcalPerHour = EnergyExpenditureModel.kcalPerKgPerHour(for: activityType, intensity: intensity) * weight
+
+        // 🔁 Coefficients contextuels
         var altitudeCoeff = 1.0
         if altitude > 2500 {
             altitudeCoeff += ((altitude - 2500) / 2500) * 0.15
         }
 
-        // ❄️ Coeff température
         var tempCoeff = 1.0
         if temperature < 5 {
             tempCoeff += (5 - temperature) * 0.02
         }
 
-        // 🔼 Coeff dénivelé (max +30%)
         let elevationCoeff = 1.0 + min(elevationGain / 1000.0 * 0.15, 0.3)
 
-        // 🔁 Simulation sur 100 pas de temps
-        let kcalPerHour = weight * 8.5
-        let dt = duration / 100
+        var distanceCoeff = 1.0
+        if let km = distance, km > 20 {
+            distanceCoeff += (km - 20) * 0.015
+        }
+
+        // 🔥 Coût énergétique réel des glucides (par heure)
+        let zoneGlucoseCoeff: [String: Double] = [
+            "Z1": 0.4,
+            "Z2": 0.55,
+            "Z3": 0.7,
+            "Z4": 0.85,
+            "Z5": 0.95
+        ]
+        let glucoseRatio = zoneGlucoseCoeff[intensity] ?? 0.55
+        let totalCoeff = glucoseRatio * altitudeCoeff * tempCoeff * elevationCoeff * distanceCoeff
+
+        // 📉 Simulation en 100 pas de temps
+        let dt = duration / 100.0
         var current = reserveMax
         var values: [Double] = []
 
         for i in 0..<100 {
             let t = dt * Double(i)
 
-            // 🍽️ Repas progressif entre 4h–5h
-            if 4.0...5.0 ~= t {
+            // 🍽️ Repas placé au milieu de l'activité (durée/2)
+            if eatingDuring && abs(t - duration / 2) < 0.25 {
+                // Simule un apport progressif de 600 kcal (~90g glucides)
                 current += (600 * 0.6 / 4) / 10.0
             }
 
             // 🍌 Collation toutes les 2h si activé
-            if Int(t) % 2 == 0 && i % 10 == 0 && eatingDuring {
+            if eatingDuring && (t > 0) && (Int(t * 60) % 120 == 0) {
                 current += (150 * 0.6) / 4
             }
 
-            // 🔥 Dépense nette
             let kcal = kcalPerHour * dt
-            let used = kcal * coeff * altitudeCoeff * tempCoeff * elevationCoeff / 4
-            let ingest = eatingDuring ? carbsPerHour * dt * 0.6 : 0
+            let used = kcal * totalCoeff / 4.0
+            let ingest = eatingDuring ? carbsPerHour * dt * 0.6 : 0.0
 
             current -= used
             current += ingest
@@ -64,9 +81,8 @@ enum GlycogenEstimator {
             values.append(current)
         }
 
-        // 📊 Résultat final
         let remaining = values.last ?? 0
-        let percent = remaining / reserveMax * 100
+        let percent = (remaining / reserveMax) * 100.0
 
         return GlycogenEstimationResult(
             reserveMax: reserveMax,

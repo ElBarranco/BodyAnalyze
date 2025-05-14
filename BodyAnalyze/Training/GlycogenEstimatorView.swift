@@ -12,6 +12,11 @@ struct GlycogenEstimatorView: View {
                         Text(type.rawValue).tag(type)
                     }
                 }
+                
+                VStack(alignment: .leading) {
+                    Text("Distance : \(viewModel.distance, specifier: "%.1f") km")
+                    Slider(value: $viewModel.distance, in: 0...100, step: 1)
+                }
 
                 Picker("Intensité", selection: $viewModel.intensity) {
                     ForEach(["Z1", "Z2", "Z3", "Z4", "Z5"], id: \.self) {

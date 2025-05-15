@@ -66,12 +66,22 @@ struct StepsView: View {
                         WeeklyStepsTrendView()
                             .environmentObject(healthVM)
                     }.wrapped()
+                    
+                    Tile(span: .full) {
+                        LightExposureChartView(
+                            viewModel: healthVM.stepVM,
+                            numberOfDays: 7
+                        )
+                    }.wrapped()
                 }
                 .padding(.vertical)
             }
             .onAppear {
                 print("🚀 Chargement distance marche/course")
                 healthVM.stepVM.loadWalkingDistancePerWeek(range: .week)
+                
+                print("🌞 Chargement exposition lumière naturelle")
+                healthVM.stepVM.loadLightExposureData(range: TimeRange.week) 
             }
             .sheet(isPresented: $showingGoalSheet) {
                 GoalInputView(goal: $healthVM.stepVM.dailyStepGoal)

@@ -103,7 +103,7 @@ class StepCountViewModel: ObservableObject {
         }
     }
 
-    private func computeAverageLightExposure() {
+    func computeAverageLightExposure() {
         guard !lightExposurePerDay.isEmpty else {
             averageLightExposure = 0
             return
@@ -112,6 +112,19 @@ class StepCountViewModel: ObservableObject {
         averageLightExposure = total / Double(lightExposurePerDay.count)
     }
 
+    /// 🌞 Charge les données d’exposition à la lumière du jour (via HealthKit `.timeInDaylight`)
+    func loadLightExposureData(range: TimeRange) {
+        healthManager.requestAuthorization { [weak self] success, _ in
+            guard let self = self, success else { return }
+            self.healthManager.fetchLightExposurePerDay(for: range) { map in
+                DispatchQueue.main.async {
+                    self.lightExposurePerDay = map
+                    self.computeAverageLightExposure()
+                }
+            }
+        }
+    }
+    
     func debugDistanceLog() {
         healthManager.requestAuthorization { [weak self] success, _ in
             guard let self = self, success else {

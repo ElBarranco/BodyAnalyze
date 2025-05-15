@@ -54,7 +54,8 @@ class HealthManager {
             HKObjectType.quantityType(forIdentifier: .runningGroundContactTime)!,
             HKObjectType.quantityType(forIdentifier: .runningStrideLength)!,
             HKObjectType.characteristicType(forIdentifier: .dateOfBirth)!,
-            HKObjectType.quantityType(forIdentifier: .distanceWalkingRunning)!
+            HKObjectType.quantityType(forIdentifier: .distanceWalkingRunning)!,
+            HKObjectType.quantityType(forIdentifier: .timeInDaylight)!
         ]
         if let stepType = HKObjectType.quantityType(forIdentifier: .stepCount) {
             types.insert(stepType)
@@ -264,7 +265,46 @@ class HealthManager {
         }
         healthStore.execute(query)
     }
+    
+    func fetchLightExposurePerDay(
+        for range: TimeRange,
+        completion: @escaping ([Date: Double]) -> Void
+    ) {
+        guard let type = HKObjectType.quantityType(forIdentifier: .timeInDaylight) else {
+            completion([:]); return
+        }
 
+        let calendar = Calendar.current
+        let start = range.startDate
+        let end = range.endDate
+        let anchor = calendar.startOfDay(for: start)
+        let interval = DateComponents(day: 1)
+        let predicate = HKQuery.predicateForSamples(withStart: start, end: end, options: .strictStartDate)
+
+        let query = HKStatisticsCollectionQuery(
+            quantityType: type,
+            quantitySamplePredicate: predicate,
+            options: .cumulativeSum,
+            anchorDate: anchor,
+            intervalComponents: interval
+        )
+
+        query.initialResultsHandler = { _, results, _ in
+            var resultMap: [Date: Double] = [:]
+            results?.enumerateStatistics(from: start, to: end) { stat, _ in
+                let day = calendar.startOfDay(for: stat.startDate)
+                let seconds = stat.sumQuantity()?.doubleValue(for: .second()) ?? 0
+                resultMap[day] = seconds / 60  // convertir en minutes
+            }
+            DispatchQueue.main.async {
+                completion(resultMap)
+            }
+        }
+
+        healthStore.execute(query)
+    }
+    
+    
     /// Variabilité cardiaque jour par jour (min/max) sur une plage donnée
     func analyzeVFCMinMaxPerDay(
         for range: TimeRange,

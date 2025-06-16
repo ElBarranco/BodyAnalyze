@@ -15,6 +15,11 @@ struct TrainingView: View {
         NavigationWrapperView(title: "Entraînement 🏋️") {
             ScrollView {
                 TileGrid {
+                    // 🥧 Répartition des disciplines (30 jours)
+                    Tile(span: .full) {
+                        DisciplinePieChartView(distribution: healthVM.trainingVM.disciplineDistribution)
+                    }.wrapped()
+                    
                     // 💨 EPOC
                     Tile(span: .full) {
                         EpocChartView()
@@ -34,7 +39,9 @@ struct TrainingView: View {
 
                     // 📈 Forme vs Fatigue (simulation)
                     Tile(span: .full) {
-                        FormeFatigueWidgetView(isSimulated: true)
+                        TrainingLoadChartView()
+                            .environmentObject(healthVM)
+  
                     }.wrapped()
 
                     // 📅 Analyse repos mensuelle
@@ -45,6 +52,21 @@ struct TrainingView: View {
                     // 🆕 Graph Trimp
                     Tile(span: .full) {
                         TrimpChartView()
+                    }.wrapped()
+                    
+                    // 🏃‍♂️ Distance hebdo actuelle
+                    Tile(span: .half) {
+                        WeeklyRunningDistanceWidget(distance: healthVM.trainingVM.weeklyRunningDistance)
+                    }.wrapped()
+
+                    // 📊 Moyenne des 6 dernières semaines
+                    Tile(span: .half) {
+                        WeeklyAverageDistanceWidget(averageDistance: healthVM.trainingVM.averageWeeklyDistance)
+                    }.wrapped()
+
+                    // 📈 Bar chart distance sur 6 semaines
+                    Tile(span: .full) {
+                        WeeklyRunningBarChartWidget(weeklyDistances: healthVM.trainingVM.weeklyRunningDistances)
                     }.wrapped()
 
                     // ⚡️ Estimation Glycogène

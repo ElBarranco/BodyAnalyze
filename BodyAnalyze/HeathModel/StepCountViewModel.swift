@@ -125,6 +125,26 @@ class StepCountViewModel: ObservableObject {
         }
     }
     
+    func loadLightExposureForMonth(displayedMonth: Date) {
+        let calendar = Calendar.current
+        guard let dayRange = calendar.range(of: .day, in: .month, for: displayedMonth),
+              let monthStart = calendar.date(from: calendar.dateComponents([.year, .month], from: displayedMonth)) else {
+            return
+        }
+
+        let startDate = calendar.startOfDay(for: monthStart)
+        let endDate = calendar.date(byAdding: .day, value: dayRange.count, to: startDate)!
+
+        let timeRange = TimeRange.custom(start: startDate, end: endDate)
+
+        healthManager.fetchLightExposurePerDay(for: timeRange) { [weak self] map in
+            DispatchQueue.main.async {
+                self?.lightExposurePerDay.merge(map) { _, new in new }
+                self?.computeAverageLightExposure()
+            }
+        }
+    }
+    
     func debugDistanceLog() {
         healthManager.requestAuthorization { [weak self] success, _ in
             guard let self = self, success else {

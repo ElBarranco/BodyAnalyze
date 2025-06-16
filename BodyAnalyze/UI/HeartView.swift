@@ -33,6 +33,33 @@ struct HeartView: View {
                     Tile(span: .full) {
                         VFCMaxChartView()
                     }.wrapped()
+                    
+                    // 🫀 Moyenne FC au repos (widget résumé)
+                      Tile(span: .half) {
+                          RestingHRWidgetView(
+                              weeklyAverage: healthVM.heartVM.restingHRAnalyzer.averageLast7Days,
+                              referenceAverage: healthVM.heartVM.restingHRAnalyzer.averageReference
+                          )
+                      }.wrapped()
+                    
+                    // 🫀 Tendance FC repos (48h vs 7j)
+                    Tile(span: .half) {
+                        RestingHRTrendWidgetView(
+                            average48h: healthVM.heartVM.averageRestingHR(last: 2),
+                            average7d: healthVM.heartVM.averageRestingHR(last: 7)
+                        )
+                    }.wrapped()
+                    
+                    // 🫀 FC au repos
+                    Tile(span: .full) {
+                        VStack(alignment: .leading, spacing: 12) {
+                            Text("🫀 Fréquence cardiaque au repos")
+                                .font(.headline)
+
+                            RestingHeartRateChartView(analyzer: healthVM.heartVM.restingHRAnalyzer)
+                                .frame(height: 300)
+                        }
+                    }.wrapped()
                 }
                 .padding(.vertical)
             }

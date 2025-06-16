@@ -55,7 +55,9 @@ class HealthManager {
             HKObjectType.quantityType(forIdentifier: .runningStrideLength)!,
             HKObjectType.characteristicType(forIdentifier: .dateOfBirth)!,
             HKObjectType.quantityType(forIdentifier: .distanceWalkingRunning)!,
-            HKObjectType.quantityType(forIdentifier: .timeInDaylight)!
+            HKObjectType.quantityType(forIdentifier: .timeInDaylight)!,
+            HKObjectType.quantityType(forIdentifier: .restingHeartRate)!
+            
         ]
         if let stepType = HKObjectType.quantityType(forIdentifier: .stepCount) {
             types.insert(stepType)
@@ -119,6 +121,22 @@ class HealthManager {
         }
     }
 
+    func fetchVO2Max(completion: @escaping (Double?) -> Void) {
+        guard let type = HKObjectType.quantityType(forIdentifier: .vo2Max) else {
+            completion(nil); return
+        }
+
+        let sort = NSSortDescriptor(key: HKSampleSortIdentifierEndDate, ascending: false)
+        let query = HKSampleQuery(sampleType: type, predicate: nil, limit: 1, sortDescriptors: [sort]) { _, results, _ in
+            guard let sample = results?.first as? HKQuantitySample else {
+                completion(nil); return
+            }
+            let value = sample.quantity.doubleValue(for: HKUnit(from: "ml/kg*min"))
+            completion(value)
+        }
+        healthStore.execute(query)
+    }
+    
     // MARK: - Requêtes quotidiennes
 
     /// Fréquence cardiaque de repos (moyenne journalière)
@@ -427,6 +445,28 @@ class HealthManager {
         group.notify(queue: .main) {
             completion(map)
         }
+    }
+    
+    func fetchRestingHeartRateHistory(for range: TimeRange, completion: @escaping ([RestingHeartRateEntry]) -> Void) {
+        let type = HKObjectType.quantityType(forIdentifier: .restingHeartRate)!
+        let predicate = HKQuery.predicateForSamples(withStart: range.startDate, end: range.endDate)
+
+        let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierEndDate, ascending: true)
+        let query = HKSampleQuery(
+            sampleType: type,
+            predicate: predicate,
+            limit: HKObjectQueryNoLimit,
+            sortDescriptors: [sortDescriptor]
+        ) { _, samples, _ in
+            let entries: [RestingHeartRateEntry] = samples?.compactMap { sample in
+                guard let quantitySample = sample as? HKQuantitySample else { return nil }
+                let bpm = quantitySample.quantity.doubleValue(for: .count().unitDivided(by: .minute()))
+                return RestingHeartRateEntry(date: sample.startDate, bpm: Int(bpm))
+            } ?? []
+            completion(entries)
+        }
+
+        healthStore.execute(query)
     }
 
     // MARK: - Pas

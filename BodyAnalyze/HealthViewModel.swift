@@ -8,6 +8,7 @@ class HealthViewModel: ObservableObject {
     @Published var calorieVM  = CalorieViewModel()
     @Published var trainingVM = TrainingViewModel()
     @Published var stepVM     = StepCountViewModel()
+    
 
     // MARK: - UI / Chargement
     @Published var isLoading: Bool = false
@@ -42,6 +43,12 @@ class HealthViewModel: ObservableObject {
                 // 🏋️ Entraînement – charger les 6 dernières semaines pour graphiques swipe
                 group.addTask {
                     self.trainingVM.loadRecentWeeksData(weeks: 6)
+                    
+                }
+                
+                // 🫁 VO2Max — appel séparé ici
+                group.addTask {
+                    self.trainingVM.loadVO2Max()
                 }
 
                 // 👣 Pas et course

@@ -15,6 +15,34 @@ class CourseManager {
     init(healthStore: HKHealthStore = HKHealthStore()) {
         self.healthStore = healthStore
     }
+    
+    func getWeeklyRunningDistances(weeks: Int = 6, completion: @escaping ([WeekDistance]) -> Void) {
+        let calendar = Calendar.current
+        let today = Date()
+        let group = DispatchGroup()
+
+        var results: [WeekDistance] = Array(repeating: WeekDistance(label: "", distance: 0), count: weeks)
+
+        for i in 0..<weeks {
+            let label = "S-\(weeks - i)"
+            guard let weekStart = calendar.date(byAdding: .day, value: -7 * (i + 1) + 1, to: today),
+                  let weekEnd = calendar.date(byAdding: .day, value: -7 * i, to: today) else { continue }
+
+            group.enter()
+            fetchRunningWorkouts(from: weekStart, to: weekEnd) { workouts in
+                let distance = workouts.reduce(0.0) {
+                    $0 + ($1.totalDistance?.doubleValue(for: .meterUnit(with: .kilo)) ?? 0)
+                }
+
+                results[i] = WeekDistance(label: label, distance: distance)
+                group.leave()
+            }
+        }
+
+        group.notify(queue: .main) {
+            completion(results)
+        }
+    }
 
     // 🏃‍♂️ Récupère les workouts de type course à pied
     func fetchRunningWorkouts(from startDate: Date, to endDate: Date, completion: @escaping ([HKWorkout]) -> Void) {

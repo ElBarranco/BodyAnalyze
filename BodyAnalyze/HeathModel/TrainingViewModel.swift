@@ -14,13 +14,30 @@ class TrainingViewModel: ObservableObject {
     @Published var restingHR: Double = 60.0
     @Published var isMale: Bool = true
     @Published var currentWeekStart: Date = Calendar.current.startOfWeek(for: Date())
+    @Published var vo2max: Double = 0.0
     
-
     @Published var weeklyWorkoutMinutes: Int = 0
+    
+    @Published var weeklyRunningDistance: Double = 0.0
+    @Published var weeklyRunningDistances: [WeekDistance] = []
+
+    private let courseManager = CourseManager()
     
     private let healthStore = HKHealthStore()
     private let healthManager = HealthManager()
     private var authorized = false
+    
+    func loadWeeklyRunningDistance() {
+        courseManager.getWeeklyRunningDistance { distance in
+            DispatchQueue.main.async { self.weeklyRunningDistance = distance }
+        }
+    }
+
+    func loadWeeklyRunningDistances() {
+        courseManager.getWeeklyRunningDistances(weeks: 6) { distances in
+            DispatchQueue.main.async { self.weeklyRunningDistances = distances }
+        }
+    }
 
     func loadRecentWeeksData(weeks: Int = 6) {
         let cal = Calendar.current
@@ -29,6 +46,10 @@ class TrainingViewModel: ObservableObject {
 
         guard let start = cal.date(byAdding: .day, value: -7 * weeks, to: today) else { return }
         loadTrainingData(from: start, to: today)
+        
+        // 🏃‍♂️ Charge les distances de course à pied
+        loadWeeklyRunningDistance()
+        loadWeeklyRunningDistances()
     }
 
     func loadTrainingData(from start: Date, to end: Date) {
@@ -150,8 +171,20 @@ class TrainingViewModel: ObservableObject {
         }
     }
 
+    func loadVO2Max() {
+        healthManager.fetchVO2Max { value in
+            DispatchQueue.main.async {
+                self.vo2max = value ?? 0.0
+            }
+        }
+    }
+    
     func calculateTrainingLoad(for date: Date) -> Double {
-        (epocPerDay[date] ?? 0) + (trimpPerDay[date] ?? 0)
+        let startOfDay = Calendar.current.startOfDay(for: date)
+        let epoc = epocPerDay[startOfDay] ?? 0
+        let trimp = trimpPerDay[startOfDay] ?? 0
+        print("📅 \(startOfDay.formatted()) ➤ EPOC: \(epoc), TRIMP: \(trimp)")
+        return epoc + trimp
     }
 
     func getWeeklyEPOCTotal() -> Double {
@@ -273,5 +306,11 @@ class TrainingViewModel: ObservableObject {
         } else {
             return "\(minutes) min"
         }
+    }
+    
+    /// Moyenne des distances sur 6 semaines
+    var averageWeeklyDistance: Double {
+        let total = weeklyRunningDistances.map(\.distance).reduce(0, +)
+        return weeklyRunningDistances.isEmpty ? 0 : total / Double(weeklyRunningDistances.count)
     }
 }

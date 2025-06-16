@@ -14,6 +14,12 @@ struct CalorieView: View {
         NavigationWrapperView(title: "Calories 🔥") {
             ScrollView {
                 TileGrid {
+                    
+                    // 🔥 Widget NEAT : tendance de mouvement
+                    Tile(span: .full) {
+                        NEATTrendWidget(viewModel: healthVM.calorieVM)
+                    }.wrapped()
+                    
                     // 🔥 Histogramme calories actives vs basales
                     Tile(span: .full) {
                         VerticalCaloriesChartView(
